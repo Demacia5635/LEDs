@@ -49,6 +49,11 @@ public final class LedHandler {
         led.setData(buffer);
     }
 
+    public static void transitionToBgr(int red, int green, int blue, int duration) {
+        double[] hsv = bgrToHsv(new Color(red, green, blue));
+        transitionTo(hsv[0], hsv[1], hsv[2], duration);
+    }
+
     public static void transitionTo(double hue, double saturation, double value, double duration) {
         double millis = duration * 1000;
         stopCurrentTransition();
